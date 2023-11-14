@@ -23,7 +23,7 @@
       /* Add other styling as needed */
   }
 
-  [role="progressbar"] {
+[role="progressbar"] {
     --size: 100px;
     --text-color: #4373b9; /* Blue color for the text */
     animation: progress 2s 0.5s forwards;
@@ -33,12 +33,16 @@
     position: relative;
     display: none;
     overflow: hidden;
-    align-items: flex-end;
+    align-items: center; /* Updated line to center vertically */
     justify-content: center;
-    font-size: calc(var(--size) / 6);
+    font-size: calc(var(--size) / 2);
     color: var(--text-color);
-    margin-top: 0;
-  }
+    margin-top: 20px; /* Adjust the margin to create space below the text */
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the element */
+}
 
   #available-points {
     text-align: center;
