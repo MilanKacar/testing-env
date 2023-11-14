@@ -133,6 +133,27 @@
     display: none;
     /* Other styles for main content */
 }
+
+  input[type="input-points"] {
+    width: 100%; /* Full width to accommodate different screen sizes */
+    padding: 12px 15px; /* Larger padding for easier interaction */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 6px; /* Smoothed corners */
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* Gentle shadow */
+    font-size: 18px; /* Larger font size for readability */
+    color: #333; /* Dark color for contrast */
+    background-color: #fff; /* Clear background */
+    outline: none; /* Remove default focus outline */
+    transition: all 0.3s ease; /* Smooth transition for interactions */
+    -webkit-appearance: none; /* Disable default iOS styling */
+    margin: 0; /* Reset any default margin */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+input[type="input-points"]:focus {
+    border-color: #4285F4; /* Highlighted border on focus */
+    box-shadow: 0 0 8px rgba(66, 133, 244, 0.3); /* Enhanced focus shadow */
+}
 </style>
 </head>
 <body>
@@ -147,6 +168,7 @@
     <br>
     <div id="loadingScreen" class="loading-style"></div>
     <div id="progressbar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="--value: 0; --secondary: #adf; --progress-value: 1000;"></div>
+    <input type="input-points" name="quantity" min="1" max="100">
   </div>
   <footer style="text-align: center; padding: 20px 0; background-color: linear-gradient(to right, #83a4d4, #b6fbff);">
     <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-facebook-f"></i></a>
