@@ -139,6 +139,9 @@
     padding: 12px 15px; /* Larger padding for easier interaction */
     border: 1px solid #ccc; /* Subtle border */
     border-radius: 6px; /* Smoothed corners */
+    justify-content: center;
+    display: none;
+    align-items: center;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* Gentle shadow */
     font-size: 18px; /* Larger font size for readability */
     color: #333; /* Dark color for contrast */
@@ -168,9 +171,7 @@ input[type="input-points"]:focus {
     <br>
     <div id="loadingScreen" class="loading-style"></div>
     <div id="progressbar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="--value: 0; --secondary: #adf; --progress-value: 1000;"></div>
-    <div>
-      <input type="input-points" name="quantity" min="1" max="100">
-    </div>
+    <input type="input-points" name="quantity" min="1" max="100">
   </div>
   <footer style="text-align: center; padding: 20px 0; background-color: linear-gradient(to right, #83a4d4, #b6fbff);">
     <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-facebook-f"></i></a>
@@ -243,6 +244,8 @@ input[type="input-points"]:focus {
     const loadingScreen = document.getElementById('loadingScreen');
     loadingScreen.style.display = 'none';
     const availablePoints = document.getElementById('available-points');
+    availablePoints.style.display = 'flex';
+    const availablePoints = document.getElementById('input-points');
     availablePoints.style.display = 'flex';
     const progressBar = document.getElementById('progressbar');
     progressBar.style.display = 'flex'; // Change to 'flex' or 'block' based on your styling
