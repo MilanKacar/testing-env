@@ -157,6 +157,14 @@ input[type="input-points"]:focus {
     border-color: #4285F4; /* Highlighted border on focus */
     box-shadow: 0 0 8px rgba(66, 133, 244, 0.3); /* Enhanced focus shadow */
 }
+
+/* Ensure legibility and ease of use on small screens */
+@media screen and (max-width: 600px) {
+    input[type="input-points"] {
+        font-size: 20px; /* Even larger font for very small screens */
+        padding: 15px 20px; /* Increased padding */
+    }
+}
 </style>
 </head>
 <body>
@@ -171,7 +179,7 @@ input[type="input-points"]:focus {
     <br>
     <div id="loadingScreen" class="loading-style"></div>
     <div id="progressbar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="--value: 0; --secondary: #adf; --progress-value: 1000;"></div>
-    <input type="input-points" name="quantity" min="1" max="100">
+    <input id="input-points" name="quantity" min="1" max="100">
   </div>
   <footer style="text-align: center; padding: 20px 0; background-color: linear-gradient(to right, #83a4d4, #b6fbff);">
     <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-facebook-f"></i></a>
