@@ -70,9 +70,9 @@
       var(--bar-gradient-end) calc(var(--percentage) * 1% / 2),
       var(--secondary) 0
     );
-    mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
+    mask: radial-gradient(at 50% 100%, white 30%, transparent 60.5%); /* Increase 55% to 60% for thicker bar */
     mask-mode: alpha;
-    -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);
+    -webkit-mask: radial-gradient(at 50% 100%, #0000 30%, #000 60.5%); /* Same adjustment for WebKit browsers */
     -webkit-mask-mode: alpha;
   }
 
