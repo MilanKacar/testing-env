@@ -117,7 +117,7 @@
       flex-direction: column;
       display: flex;
       align-items: center;
-      top: 60%;
+      top: 70%;
       left: 50%;
       width: 50px; /* Size of the loader */
       height: 50px; /* Size of the loader */
@@ -178,10 +178,10 @@ input[id="input-points"]:focus {
     </a>
   </header>
   <div class="flex-container">
-    <div id="available-points">Dépenses disponibles CHF</div>
+    <div id="progressbar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="--value: 0; --secondary: #adf; --progress-value: 1000;"></div>
     <div id="loadingScreen" class="loading-style"></div>
     <br>
-    <div id="progressbar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="--value: 0; --secondary: #adf; --progress-value: 1000;"></div>
+    <div id="available-points">Dépenses disponibles CHF</div>
     <br>
     <br>
     <div class="flex-container" style="padding-top:25px;">
