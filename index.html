@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  @keyframes progress {
+    0% { --percentage: 0; }
+    100% { --percentage: var(--progress-value); }
+  }
+
+  @property --percentage {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
+
+  header {
+      text-align: center; /* Center the content */
+      padding: 0px 0; /* Add some padding for aesthetic spacing */
+      /* Add other styling as needed */
+  }
+
+  [role="progressbar"] {
+    --size: 180px;
+    --text-color: #4373b9; /* Blue color for the text */
+    animation: progress 2s 0.5s forwards;
+    width: var(--size);
+    aspect-ratio: 2 / 1;
+    border-radius: 50% / 100% 100% 0 0;
+    position: relative;
+    display: none;
+    overflow: hidden;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: calc(var(--size) / 6);
+    color: var(--text-color);
+    margin-top: 0;
+  }
+
+  #available-points {
+    text-align: center;
+    display: none;
+    font-size: 26px;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    background: linear-gradient(to right, #236a82, #4373b9); /* Light blue to dark blue gradient */
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  [role="progressbar"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(
+      from 0.75turn at 50% 100%, 
+      var(--bar-gradient-start) calc(var(--percentage) * 1% / 2), 
+      var(--bar-gradient-end) calc(var(--percentage) * 1% / 2),
+      var(--secondary) 0
+    );
+    mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
+    mask-mode: alpha;
+    -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);
+    -webkit-mask-mode: alpha;
+  }
+
+  [role="progressbar"]::after {
+    counter-reset: percentage var(--value);
+    content: counter(percentage);
+    color: var(--text-color);
+  }
+
+
+  /* demo */
+  body {
+    margin: 0;
+    display: grid;
+    place-items: center;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    background: linear-gradient(to right, #83a4d4, #b6fbff);
+  }
+
+  #logo img {
+      transform: scale(0.7); /* Scale down the image to 40% of its original size */
+      display: inline-block; /* Allows for centering with text-align */
+      margin-bottom: -120px;
+    }
+    
+  .parent-style {
+      position: relative;
+      /* Other styles for the parent div */
+  }
+  
+  @keyframes spin {
+      0% {
+          transform: rotate(0deg);
+      }
+      100% {
+          transform: rotate(360deg);
+      }
+  }
+
+    .inputNumber {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  
+  .loading-style {
+      justify-content: center;
+      display: felx;
+      align-items: center;
+      top: 50%;
+      left: 50%;
+      width: 50px; /* Size of the loader */
+      height: 50px; /* Size of the loader */
+      background: transparent;
+      border-radius: 50%;
+      border: 5px solid #f3f3f3; /* Light grey border */
+      border-top: 5px solid #3498db; /* Blue color */
+      animation: spin 2s linear infinite;
+      transform: translate(-50%, -50%); /* Center the loader */
+  }
+
+.content-style {
+    display: none;
+    /* Other styles for main content */
+}
+</style>
+</head>
+<body>
+  <header>
+    <!-- Logo in the header, which links to the specified URL -->
+    <a href="https://tforce.ch/" target="_blank" id="logo">
+      <img src="logo.png" alt="Task Force Event Logistique Logo">
+    </a>
+  </header>
+  <div>
+    <div id="available-points">Dépenses disponibles CHF</div>
+    <div id="loadingScreen" class="loading-style"></div>
+    <div id="progressbar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="--value: 0; --secondary: #adf; --progress-value: 1000;"></div>
+    <input type="number" id="inputNumber" placeholder="10" />
+
+  </div>
+  <footer style="text-align: center; padding: 20px 0; background-color: linear-gradient(to right, #83a4d4, #b6fbff);">
+    <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-linkedin-in"></i></a>
+    <p style="font-size: 10px; color: #4373b9; margin-top: 20px;">Powered by RushB!</p>
+  </footer>
+</body>
+<script>
+
+  // Parse the URL to extract the id parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  var currentPoints = 0; // Initialize currentPoints
+  const idValue = urlParams.get("id");
+  
+
+
+
+  // Function to get and display points
+  function getPoints(id) {
+      return new Promise((resolve, reject) => {
+          fetch("https://qr-app-o5ud4o55aa-ey.a.run.app/get-points", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify({ id: id })
+          })
+          .then(response => response.json())
+          .then(data => {
+              const currentPoints = parseInt(data.current_points, 10);
+              const startingPoints = parseInt(data.starting_points, 10);
+              // pointsInfo.textContent = `Points: ${points}`;
+              // currentPoints = points; // Update currentPoints here
+              // setProgressBarColor(points);
+
+              const progressbar = document.getElementById('progressbar');
+              const gradients = {
+                red: { start: '#ff9999', end: '#8b0000' },
+                yellow: { start: '#ffff99', end: '#ffcc00' },
+                green: { start: '#99ff99', end: '#006400' },
+              };
+            
+              const points = (currentPoints / startingPoints) * 100;
+              let gradient;
+              if (points < 20) {
+                gradient = gradients.red;
+              } else if (points >= 20 && points < 70) {
+                gradient = gradients.yellow;
+              } else {
+                gradient = gradients.green;
+              }
+            
+              progressbar.style.setProperty('--bar-gradient-start', gradient.start);
+              progressbar.style.setProperty('--bar-gradient-end', gradient.end);
+              progressbar.style.setProperty('--value', currentPoints.toString());
+              progressbar.style.setProperty('--progress-value', points.toString());
+              // Function to show the progress bar after getting points
+              showProgressBar();
+              resolve(points); // Resolve the Promise with the integer points value
+              
+          })
+          .catch(error => {
+              reject(error); // Reject the Promise if there's an error
+          });
+      });
+  }
+
+  function showProgressBar() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    loadingScreen.style.display = 'none';
+    const availablePoints = document.getElementById('available-points');
+    availablePoints.style.display = 'flex';
+    const progressBar = document.getElementById('progressbar');
+    progressBar.style.display = 'flex'; // Change to 'flex' or 'block' based on your styling
+  }
+
+
+  function setProgressBarColor(progressValue) {
+    const progressbar = document.getElementById('progressbar');
+    const gradients = {
+      red: { start: '#ff9999', end: '#8b0000' },
+      yellow: { start: '#ffff99', end: '#ffcc00' },
+      green: { start: '#99ff99', end: '#006400' },
+    };
+  
+    let gradient;
+    if (progressValue < 20) {
+      gradient = gradients.red;
+    } else if (progressValue >= 20 && progressValue < 55) {
+      gradient = gradients.yellow;
+    } else {
+      gradient = gradients.green;
+    }
+  
+    progressbar.style.setProperty('--bar-gradient-start', gradient.start);
+    progressbar.style.setProperty('--bar-gradient-end', gradient.end);
+  }
+  
+
+
+
+  // Initial load of points using the extracted id
+  if (idValue) {
+      getPoints(idValue);
+  }
+  
+</script>
+
+
+</html>
