@@ -24,20 +24,24 @@
   }
 
   [role="progressbar"] {
-    --size: 180px;
-    --text-color: #4373b9; /* Blue color for the text */
-    animation: progress 2s 0.5s forwards;
-    width: var(--size);
-    aspect-ratio: 2 / 1;
-    border-radius: 50% / 100% 100% 0 0;
-    position: relative;
-    display: none;
-    overflow: hidden;
-    align-items: flex-end;
-    justify-content: center;
-    font-size: calc(var(--size) / 6);
-    color: var(--text-color);
-    margin-top: 0;
+      --size: 180px;
+      --text-color: #4373b9; /* Blue color for the text */
+      animation: progress 2s 0.5s forwards;
+      width: var(--size);
+      aspect-ratio: 2 / 1;
+      border-radius: 50% / 100% 100% 0 0;
+      position: relative;
+      display: none;
+      overflow: hidden;
+      align-items: center; /* Updated line to center vertically */
+      justify-content: center;
+      font-size: calc(var(--size) / 6);
+      color: var(--text-color);
+      margin-top: 0;
+      position: absolute;
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Center the element */
   }
 
   #available-points {
