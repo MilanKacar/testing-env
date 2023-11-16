@@ -472,9 +472,11 @@ input[id="input-points"]:focus {
                 const progressBar = document.getElementById('progressbar');
                 progressbar.style.setProperty('--value', '0');
                 getPoints(idValue);
+                var inputElement = document.getElementById("input-points");
+                var inputValue = inputElement.value;
               }
               else {
-                alert("You are not authorized for the request.");
+                alert("You are not authorized for the request or something went wrong.");
               }
           })
           .catch(error => {
