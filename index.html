@@ -399,20 +399,35 @@ input[id="input-points"]:focus {
 
   // Function to get and validate the input value
   function getInputValue() {
-      var inputElement = document.getElementById("input-points");
       var inputValue = inputElement.value;
   
       // Check if the input is a valid number
       if (!isNaN(inputValue) && inputValue !== "") {
           var numericValue = parseFloat(inputValue);
-          console.log("Numeric Value:", numericValue);
-          return numericValue;
+  
+          // Assuming currentPoints and startingPoints are global variables
+          if (numericValue > currentPoints) {
+              // Display an alert for insufficient credits
+              alert("User does not have enough credits.");
+              // Clear the input field
+              inputElement.value = "";
+              return null;
+          } else if (numericValue > startingPoints) {
+              // Display an alert for exceeding starting points
+              alert("User cannot deduct more than starting credits.");
+              // Clear the input field
+              inputElement.value = "";
+              return null;
+          } else {
+              console.log("Numeric Value:", numericValue);
+              return numericValue;
+          }
       } else {
           // Display an alert for invalid input
           alert("Please enter a valid number.");
           // Clear the input field
           inputElement.value = "";
-          return null; // or any default value you want for invalid input
+          return null;
       }
   }
   
