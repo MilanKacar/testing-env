@@ -400,6 +400,7 @@ input[id="input-points"]:focus {
   // Function to get and validate the input value
   function getInputValue() {
       var inputElement = document.getElementById("input-points");
+      var inputValue = inputElement.value;
   
       // Check if the input is a valid number
       if (!isNaN(inputValue) && inputValue !== "") {
