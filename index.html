@@ -308,7 +308,7 @@ input[id="input-points"]:focus {
   const idValue = urlParams.get("id");
   const apiKey = urlParams.get("API_KEY");
   
-  if !(apiKey) {
+  if (!apiKey) {
     window.location.replace('https://milankacar.github.io/points-check/?' + idValue);
   }
 
