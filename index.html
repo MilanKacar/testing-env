@@ -489,6 +489,8 @@ input[id="input-points"]:focus {
 
     document.querySelector('.no-button').onclick = function() {
         document.getElementById('modal').style.display = 'none';
+        var inputElement = document.getElementById("input-points");
+        inputElement.value = "";
     }
 
   
