@@ -221,26 +221,6 @@ input[id="input-points"]:focus {
   .button:active {
       top: 1px;
 
-  /* Center the modal vertically and horizontally */
-  .modal {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modal-dialog {
-    max-width: 60%;
-  }
-
-  .btn-success {
-    background-color: #2ecc71;
-    border-color: #2ecc71;
-  }
-
-  .btn-danger {
-    background-color: #e74c3c;
-    border-color: #e74c3c;
-  }
 
 
 </style>
@@ -263,26 +243,6 @@ input[id="input-points"]:focus {
       </div>
       <button class="button" type="button" id="subtract-button" data-toggle="modal" data-target="#confirmationModal">Subtract</button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Do you want to proceed?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" onclick="handleResponse(true)">Yes</button>
-            <button type="button" class="btn btn-danger" onclick="handleResponse(false)">No</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
   <footer style="text-align: center; padding: 20px 0; background-color: linear-gradient(to right, #83a4d4, #b6fbff);">
     <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-facebook-f"></i></a>
@@ -290,9 +250,6 @@ input[id="input-points"]:focus {
     <a href="https://www.linkedin.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-linkedin-in"></i></a>
     <p style="font-size: 10px; color: #4373b9; margin-top: 20px;">Powered by RushB!</p>
   </footer>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script>
     function handleResponse(isYes) {
       if (isYes) {
