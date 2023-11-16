@@ -397,7 +397,25 @@ input[id="input-points"]:focus {
   }
   
 
-
+  // Function to get and validate the input value
+  function getInputValue() {
+      var inputElement = document.getElementById("input-points");
+      var inputValue = inputElement.value;
+  
+      // Check if the input is a valid number
+      if (!isNaN(inputValue) && inputValue !== "") {
+          var numericValue = parseFloat(inputValue);
+          console.log("Numeric Value:", numericValue);
+          return numericValue;
+      } else {
+          // Display an alert for invalid input
+          alert("Please enter a valid number.");
+          // Clear the input field
+          inputElement.value = "";
+          return null; // or any default value you want for invalid input
+      }
+  }
+  
   // Initial load of points using the extracted id
   if (idValue) {
       getPoints(idValue);
@@ -409,7 +427,8 @@ input[id="input-points"]:focus {
 
     document.querySelector('.yes-button').onclick = function() {
         document.getElementById('modal').style.display = 'none';
-        
+        // Example of using the function
+        var userInput = getInputValue();
     }
 
     document.querySelector('.no-button').onclick = function() {
