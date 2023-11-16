@@ -219,6 +219,46 @@ input[id="input-points"]:focus {
   
   .button:active {
       top: 1px;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px; /* Set a maximum width */
+    border-radius: 15px; /* Rounded corners */
+    text-align: center;
+}
+
+.yes-button, .no-button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.yes-button {
+    background-color: #003366; /* Dark Blue */
+}
+
+.no-button {
+    background-color: #add8e6; /* Light Blue */
+}
 
 
 </style>
@@ -240,6 +280,13 @@ input[id="input-points"]:focus {
         <input id="input-points" name="quantity" min="1" max="10000">
       </div>
       <button class="button" type="button" id="subtract-button">Subtract</button>
+  </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+        <p>Do you want to proceed?</p>
+        <button class="yes-button">YES</button>
+        <button class="no-button">NO</button>
+    </div>
   </div>
   <footer style="text-align: center; padding: 20px 0; background-color: linear-gradient(to right, #83a4d4, #b6fbff);">
     <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-facebook-f"></i></a>
@@ -346,11 +393,25 @@ input[id="input-points"]:focus {
   
 
 
-
   // Initial load of points using the extracted id
   if (idValue) {
       getPoints(idValue);
   }
+
+    document.getElementById('subtract-button').onclick = function() {
+        document.getElementById('modal').style.display = 'block';
+    }
+
+    document.querySelector('.yes-button').onclick = function() {
+        alert('You clicked YES');
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    document.querySelector('.no-button').onclick = function() {
+        alert('You clicked NO');
+        document.getElementById('modal').style.display = 'none';
+    }
+
   
 </script>
 
