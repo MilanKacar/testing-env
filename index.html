@@ -269,16 +269,17 @@ input[id="input-points"]:focus {
       <div class="flex-container" style="padding-bottom: 14px;">
         <input id="input-points" name="quantity" min="1" max="10000">
       </div>
-
-      <div class="overlay" id="modalOverlay">
-        <div class="modal">
-          <h2>Confirmation</h2>
-          <p>Do you want to proceed?</p>
-          <button class="btn" onclick="handleResponse(true)">Yes</button>
-          <button class="btn" onclick="handleResponse(false)">No</button>
+      <div class="flex-container" style="padding-bottom: 14px;">
+        <div class="overlay" id="modalOverlay">
+          <div class="modal">
+            <h2>Confirmation</h2>
+            <p>Do you want to proceed?</p>
+            <button class="btn" onclick="handleResponse(true)">Yes</button>
+            <button class="btn" onclick="handleResponse(false)">No</button>
+          </div>
         </div>
       </div>
-      <button class="button" type="button" id="subtract-button" data-toggle="modal" onclick="openModal()" >Subtract</button>
+      <button class="btn" type="button" id="subtract-button"  onclick="openModal()">Subtract</button>
 
 
   <footer style="text-align: center; padding: 20px 0; background-color: linear-gradient(to right, #83a4d4, #b6fbff);">
