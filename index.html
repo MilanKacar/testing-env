@@ -231,17 +231,12 @@ input[id="input-points"]:focus {
     </a>
   </header>
   <div class="flex-container">
-      <div class="flex-container" style="padding-bottom: 25px;">
+      <div class="flex-container" style="padding-bottom: 26px;">
         <div id="progressbar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="--value: 0; --secondary: #adf; --progress-value: 1000;"></div>
       </div>
-      <div id="available-points">Dépenses disponibles CHF</div>
-
-
+      <div id="available-points" style="padding-bottom: 14px;">Points à déduire CHF</div>
       <div id="loadingScreen" class="loading-style"></div>
-
-
-      <input id="input-points" name="quantity" min="1" max="10000">
-
+      <input id="input-points" name="quantity" min="1" max="10000" style="padding-bottom: 14px;">
       <button class="button" type="button" id="subtract-button">Subtract</button>
   </div>
   <footer style="text-align: center; padding: 20px 0; background-color: linear-gradient(to right, #83a4d4, #b6fbff);">
@@ -313,8 +308,8 @@ input[id="input-points"]:focus {
 
   function showProgressBar() {
     const loadingScreen = document.getElementById('loadingScreen');
-    /*loadingScreen.style.display = 'none';*/
-    loadingScreen.remove();
+    loadingScreen.style.display = 'none';
+    /*loadingScreen.remove();*/
     const availablePoints = document.getElementById('available-points');
     availablePoints.style.display = 'flex';
     const inputPoints = document.getElementById('input-points');
