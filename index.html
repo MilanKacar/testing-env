@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <style>
   @keyframes progress {
     0% { --percentage: 0; }
@@ -240,30 +239,14 @@ input[id="input-points"]:focus {
       <div class="flex-container" style="padding-bottom: 14px;">
         <input id="input-points" name="quantity" min="1" max="10000">
       </div>
-
-      <button type="button" id="subtract-button" >Subtract</button>
-
-
+      <button class="button" type="button" id="subtract-button">Subtract</button>
+  </div>
   <footer style="text-align: center; padding: 20px 0; background-color: linear-gradient(to right, #83a4d4, #b6fbff);">
     <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-facebook-f"></i></a>
     <a href="https://www.instagram.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-instagram"></i></a>
     <a href="https://www.linkedin.com" target="_blank" style="margin: 0 10px; color: #4373b9;"><i class="fab fa-linkedin-in"></i></a>
     <p style="font-size: 10px; color: #4373b9; margin-top: 20px;">Powered by RushB!</p>
   </footer>
-  <script>
-    function handleResponse(isYes) {
-      if (isYes) {
-        alert('You clicked Yes!');
-        // Add your "Yes" logic here
-      } else {
-        alert('You clicked No!');
-        // Add your "No" logic here
-      }
-
-      // Close the modal after handling the response
-      $('#confirmationModal').modal('hide');
-    }
-</script>
 </body>
 <script>
 
@@ -271,6 +254,8 @@ input[id="input-points"]:focus {
   const urlParams = new URLSearchParams(window.location.search);
   var currentPoints = 0; // Initialize currentPoints
   const idValue = urlParams.get("id");
+  
+
 
 
   // Function to get and display points
@@ -359,6 +344,9 @@ input[id="input-points"]:focus {
     progressbar.style.setProperty('--bar-gradient-end', gradient.end);
   }
   
+
+
+
   // Initial load of points using the extracted id
   if (idValue) {
       getPoints(idValue);
