@@ -170,56 +170,54 @@ input[id="input-points"]:focus {
     flex-direction: column;
 }
 
-      .button {
-        position: relative;
-        padding: 20px;
-        background-color: #4373b9;
-        display: none;
-        border-radius: 4em;
-        font-size: 16px;
-        color: white;
-        padding: 0.8em 1.8em;
-        cursor: pointer;
-        user-select: none;
-        text-align: center;
-        text-decoration: none;
-        cursor: pointer;
-        transition-duration: 0.4s;
-        -webkit-transition-duration: 0.4s;
-    }
+.button {
+    position: relative;
+    background-color: #55a1ff; /* Updated color */
+    display: none;
+    border-radius: 4em;
+    font-size: 16px;
+    color: white;
+    padding: 0.8em 1.8em;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    border: 2px solid #236a82; /* Updated border color and thickness */
+}
 
-    .button:hover {
-        transition-duration: 0.1s;
-        background-color: #6699e3;
-    }
+.button:hover {
+    background-color: #7fb9ff; /* Updated color on hover */
+}
 
-    .button:after {
-        content: "";
-        display: block;
-        position: absolute;
-        border-radius: 4em;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: all 0.5s;
-        box-shadow: 0 0 10px 40px white;
-    }
+.button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 4em;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+}
 
-    .button:active:after {
-        box-shadow: 0 0 0 0 white;
-        position: absolute;
-        border-radius: 4em;
-        left: 0;
-        top: 0;
-        opacity: 1;
-        transition: 0s;
-    }
+.button:active:after {
+    box-shadow: none; /* Removed box shadow on active */
+    position: absolute;
+    border-radius: 4em;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: 0s;
+}
 
-    .button:active {
-        top: 1px;
-    }
+.button:active {
+    top: 1px;
+}
 
 
 </style>
