@@ -235,36 +235,6 @@ input[id="input-points"]:focus {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-
-  .button-container button {
-    background-color: #f1f1f1;
-    color: #333;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    border-radius: 4em;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
-  }
-
-  .button-container button:hover {
-    background-color: lightblue;
-  }
-
-    /* Existing .button CSS */
-
   .modal {
       display: none;
       position: fixed;
@@ -321,17 +291,6 @@ input[id="input-points"]:focus {
         <input id="input-points" name="quantity" min="1" max="10000">
       </div>
       <button class="button" type="button" id="subtract-button">Subtract</button>
-
-      <!-- Modal -->
-      <div class="modal" id="myModal">
-        <div class="modal-content">
-          <p>Do you want to proceed?</p>
-          <div class="button-container">
-            <button class="button" id="yesButton">Yes</button>
-            <button class="button" id="noButton" style="background-color: lightblue; color: #333;">No</button>
-          </div>
-        </div>
-      </div>
   </div>
   <div id="modal" class="modal">
     <div class="modal-content">
