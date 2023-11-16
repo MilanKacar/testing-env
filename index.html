@@ -26,7 +26,7 @@
 [role="progressbar"] {
     --size: 100px;
     --text-color: #4373b9; /* Blue color for the text */
-    margin-bottom: 70px;
+    
     animation: progress 2s 0.5s forwards;
     width: var(--size);
     aspect-ratio: 2 / 1;
@@ -60,6 +60,7 @@
   [role="progressbar"]::before {
     content: "";
     position: absolute;
+    margin-bottom: 70px;
     top: 0;
     bottom: 0;
     left: 0;
