@@ -304,10 +304,11 @@ input[id="input-points"]:focus {
   // Parse the URL to extract the id parameter
   const urlParams = new URLSearchParams(window.location.search);
   var currentPoints = 0; // Initialize currentPoints
+  var startingPoints = 0;
   const idValue = urlParams.get("id");
+  const apiKey = "";
   
-
-
+  
 
   // Function to get and display points
   function getPoints(id) {
@@ -321,8 +322,8 @@ input[id="input-points"]:focus {
           })
           .then(response => response.json())
           .then(data => {
-              const currentPoints = parseInt(data.current_points, 10);
-              const startingPoints = parseInt(data.starting_points, 10);
+              currentPoints = parseInt(data.current_points, 10);
+              startingPoints = parseInt(data.starting_points, 10);
               // pointsInfo.textContent = `Points: ${points}`;
               // currentPoints = points; // Update currentPoints here
               // setProgressBarColor(points);
@@ -408,6 +409,7 @@ input[id="input-points"]:focus {
 
     document.querySelector('.yes-button').onclick = function() {
         document.getElementById('modal').style.display = 'none';
+        
     }
 
     document.querySelector('.no-button').onclick = function() {
