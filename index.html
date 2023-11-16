@@ -485,6 +485,9 @@ input[id="input-points"]:focus {
           .then(data => {
               // Handle the response data
               console.log("Response:", data);
+              if (data.error) {
+                alert("You are not authorized for the request.");
+              }
               getPoints(idValue);
               showProgressBar();
           })
