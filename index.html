@@ -469,8 +469,9 @@ input[id="input-points"]:focus {
                 alert("You are not authorized for the request.");
               }
               if (data.success) {
+                const progressBar = document.getElementById('progressbar');
+                progressbar.style.setProperty('--value', '0');
                 getPoints(idValue);
-                showProgressBar();
               }
               else {
                 alert("You are not authorized for the request.");
