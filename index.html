@@ -468,9 +468,10 @@ input[id="input-points"]:focus {
               if (data.error) {
                 alert("You are not authorized for the request.");
               }
-              if (data.success)
+              if (data.success) {
                 getPoints(idValue);
                 showProgressBar();
+              }
               else {
                 alert("You are not authorized for the request.");
               }
