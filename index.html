@@ -360,6 +360,20 @@ input[id="input-points"]:focus {
       });
   }
 
+  function hideProgressBar() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    loadingScreen.style.display = 'flex';
+    /*loadingScreen.remove();*/
+    const availablePoints = document.getElementById('available-points');
+    availablePoints.style.display = 'none';
+    const inputPoints = document.getElementById('input-points');
+    inputPoints.style.display = 'none';
+    const progressBar = document.getElementById('progressbar');
+    progressBar.style.display = 'none';
+    const subtractButton = document.getElementById("subtract-button");
+    subtractButton.style.display = 'none';
+  }
+
   function showProgressBar() {
     const loadingScreen = document.getElementById('loadingScreen');
     loadingScreen.style.display = 'none';
@@ -445,29 +459,41 @@ input[id="input-points"]:focus {
         document.getElementById('modal').style.display = 'none';
         // Example of using the function
         var userInput = getInputValue();
-        var updatedPoints = currentPoints - userInput;
+        var newPoints = currentPoints - userInput;
 
-        const progressbar = document.getElementById('progressbar');
-        const gradients = {
-          red: { start: '#ff9999', end: '#8b0000' },
-          yellow: { start: '#ffff99', end: '#ffcc00' },
-          green: { start: '#99ff99', end: '#006400' },
-        };
+      // Replace these values with your actual data
+      const apiUrl = "https://qr-app-o5ud4o55aa-ey.a.run.app/update-points";
+
+      // Prepare the request body
+      const requestBody = {
+          id: idValue,
+          new_points: newPoints,
+          credentials: apiKey
+      };
       
-        const points = (updatedPoints / startingPoints) * 100;
-        let gradient;
-        if (points < 20) {
-          gradient = gradients.red;
-        } else if (points >= 20 && points < 70) {
-          gradient = gradients.yellow;
-        } else {
-          gradient = gradients.green;
-        }
-      
-        progressbar.style.setProperty('--bar-gradient-start', gradient.start);
-        progressbar.style.setProperty('--bar-gradient-end', gradient.end);
-        progressbar.style.setProperty('--value', updatedPoints.toString());
-        progressbar.style.setProperty('--progress-value', points.toString());
+      // Make the POST request
+      hideProgressBar();
+      fetch(apiUrl, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+              // Add other headers if needed
+          },
+          body: JSON.stringify(requestBody)
+      })
+          .then(response => response.json())
+          .then(data => {
+              // Handle the response data
+              console.log("Response:", data);
+              getPoints(idValue);
+              showProgressBar();
+          })
+          .catch(error => {
+              // Handle errors
+              alert("Something went wrong, points are not deducted. Try it again.");
+              console.error("Error:", error);
+      });
+
     }
 
     document.querySelector('.no-button').onclick = function() {
