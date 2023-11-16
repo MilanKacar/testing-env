@@ -445,6 +445,29 @@ input[id="input-points"]:focus {
         document.getElementById('modal').style.display = 'none';
         // Example of using the function
         var userInput = getInputValue();
+        var updatedPoints = currentPoints - userInput;
+
+        const progressbar = document.getElementById('progressbar');
+        const gradients = {
+          red: { start: '#ff9999', end: '#8b0000' },
+          yellow: { start: '#ffff99', end: '#ffcc00' },
+          green: { start: '#99ff99', end: '#006400' },
+        };
+      
+        const points = (updatedPoints / startingPoints) * 100;
+        let gradient;
+        if (points < 20) {
+          gradient = gradients.red;
+        } else if (points >= 20 && points < 70) {
+          gradient = gradients.yellow;
+        } else {
+          gradient = gradients.green;
+        }
+      
+        progressbar.style.setProperty('--bar-gradient-start', gradient.start);
+        progressbar.style.setProperty('--bar-gradient-end', gradient.end);
+        progressbar.style.setProperty('--value', updatedPoints.toString());
+        progressbar.style.setProperty('--progress-value', points.toString());
     }
 
     document.querySelector('.no-button').onclick = function() {
