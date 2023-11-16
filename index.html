@@ -452,7 +452,8 @@ input[id="input-points"]:focus {
           new_points: newPoints,
           credentials: apiKey
       };
-      
+
+      console.log(requestBody);
       // Make the POST request
       hideProgressBar();
       fetch(apiUrl, {
