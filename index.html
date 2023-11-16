@@ -389,27 +389,10 @@ input[id="input-points"]:focus {
   }
 
 
-  function setProgressBarColor(progressValue) {
-    const progressbar = document.getElementById('progressbar');
-    const gradients = {
-      red: { start: '#ff9999', end: '#8b0000' },
-      yellow: { start: '#ffff99', end: '#ffcc00' },
-      green: { start: '#99ff99', end: '#006400' },
-    };
-  
-    let gradient;
-    if (progressValue < 20) {
-      gradient = gradients.red;
-    } else if (progressValue >= 20 && progressValue < 55) {
-      gradient = gradients.yellow;
-    } else {
-      gradient = gradients.green;
-    }
-  
-    progressbar.style.setProperty('--bar-gradient-start', gradient.start);
-    progressbar.style.setProperty('--bar-gradient-end', gradient.end);
+  // Initial load of points using the extracted id
+  if (idValue) {
+      getPoints(idValue);
   }
-  
 
   // Function to get and validate the input value
   function getInputValue() {
@@ -446,10 +429,7 @@ input[id="input-points"]:focus {
       }
   }
   
-  // Initial load of points using the extracted id
-  if (idValue) {
-      getPoints(idValue);
-  }
+
 
     document.getElementById('subtract-button').onclick = function() {
         document.getElementById('modal').style.display = 'block';
