@@ -421,14 +421,15 @@ input[id="input-points"]:focus {
           } else {
               console.log("Numeric Value:", numericValue);
               return numericValue;
+          } else if {
+              alert("Number has to be positive.");
+          } else {
+              // Display an alert for invalid input
+              alert("Please enter a valid number.");
+              // Clear the input field
+              inputElement.value = "";
+              return null;
           }
-      } else {
-          // Display an alert for invalid input
-          alert("Please enter a valid number.");
-          // Clear the input field
-          inputElement.value = "";
-          return null;
-      }
   }
   
 
