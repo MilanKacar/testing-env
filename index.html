@@ -474,7 +474,10 @@ input[id="input-points"]:focus {
               if (data.success) {
                 const progressBar = document.getElementById('progressbar');
                 progressbar.style.setProperty('--value', '0');
-                getPoints(idValue);
+                //getPoints(idValue);
+                
+                progressbar.style.setProperty('--value', data.points.toString());
+                
                 var inputElement = document.getElementById("input-points");
                 inputElement.value = "";
               }
