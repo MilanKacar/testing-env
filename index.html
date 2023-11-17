@@ -473,12 +473,8 @@ input[id="input-points"]:focus {
               }
               if (data.success) {
                 const progressBar = document.getElementById('progressbar');
-                progressbar.style.setProperty('--value', '0');
-                currentPoints = data.points
-                
-                  //getPoints(idValue);
-                  
-                const progressbar = document.getElementById('progressbar');
+                progressBar.style.setProperty('--value', '0');
+                currentPoints = data.points                  
                 const gradients = {
                   red: { start: '#ff9999', end: '#8b0000' },
                   yellow: { start: '#ffff99', end: '#ffcc00' },
@@ -495,10 +491,10 @@ input[id="input-points"]:focus {
                   gradient = gradients.green;
                 }
               
-                progressbar.style.setProperty('--bar-gradient-start', gradient.start);
-                progressbar.style.setProperty('--bar-gradient-end', gradient.end);
-                progressbar.style.setProperty('--value', currentPoints.toString());
-              progressbar.style.setProperty('--progress-value', points.toString());
+                progressBar.style.setProperty('--bar-gradient-start', gradient.start);
+                progressBar.style.setProperty('--bar-gradient-end', gradient.end);
+                progressBar.style.setProperty('--value', currentPoints.toString());
+                progressBar.style.setProperty('--progress-value', points.toString());
                 
                 showProgressBar();
                 var inputElement = document.getElementById("input-points");
